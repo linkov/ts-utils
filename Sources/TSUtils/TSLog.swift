@@ -13,7 +13,7 @@ public enum LogLevel: String {
 
 public class TSLog {
     
-    static let sI = TSLog()
+    public static let sI = TSLog()
     
     public var activeLevel: LogLevel = .error
     
