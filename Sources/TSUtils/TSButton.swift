@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TSButton: UIButton {
+public class TSButton: UIButton {
     
     var isEnalable = false {
         didSet {
@@ -20,7 +20,7 @@ class TSButton: UIButton {
         }
     }
 
-    override func didMoveToSuperview() {
+    public override func didMoveToSuperview() {
         
         layer.borderWidth = 3
         layer.borderColor = UIColor.yellow.cgColor
@@ -34,7 +34,7 @@ class TSButton: UIButton {
         
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         if (isEnalable) {
             if (isEnabled) {
@@ -48,7 +48,7 @@ class TSButton: UIButton {
 
     }
     
-    override func setTitle(_ title: String?, for state: UIControl.State) {
+    public override func setTitle(_ title: String?, for state: UIControl.State) {
         let ttl = "   \(title ?? "")   "
         super.setTitle(ttl, for: state)
     }

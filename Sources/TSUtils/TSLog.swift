@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Combine
 
-enum LogLevel: String {
+public enum LogLevel: String {
     case error, warning, info, debug
 }
 
-class TSLog {
+public class TSLog {
     
     static let sI = TSLog()
     
