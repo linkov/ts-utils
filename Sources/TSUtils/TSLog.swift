@@ -17,14 +17,14 @@ public class TSLog {
     
     public var activeLevel: LogLevel = .error
     
-    func log(_ level: LogLevel, _ str: String, functionName: String = #function) {
+    public func log(_ level: LogLevel, _ str: String, functionName: String = #function) {
         if (level == activeLevel) {
             print ("\(functionName)::\(level):: \(str) ")
         }
       
     }
     
-    func logCall(functionName: String = #function, fileName: String = #file) {
+    public func logCall(functionName: String = #function, fileName: String = #file) {
         if (activeLevel == .debug) {
             let fname = ((fileName as NSString).lastPathComponent as NSString).deletingPathExtension
             print("TSLog :: \(functionName) :: \(fname) ")
