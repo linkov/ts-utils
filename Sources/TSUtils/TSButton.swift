@@ -10,7 +10,7 @@ import UIKit
 
 public class TSButton: UIButton {
     
-    var isEnalable = false {
+    public var isEnalable = false {
         didSet {
             if (isEnalable) {
                 setTitleColor(.black, for: .normal)
