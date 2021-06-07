@@ -46,7 +46,7 @@ public class TSButton: UIButton {
             }
         } else {
             
-            if (isEnabled) {
+            if (!isEnabled) {
                 layer.borderColor = UIColor.yellow.withAlphaComponent(0.5).cgColor
             } else {
                 layer.borderColor = UIColor.yellow.cgColor
