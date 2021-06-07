@@ -7,8 +7,8 @@
 
 import Foundation
 
-public enum LogLevel: String {
-    case error, warning, info, debug
+public enum LogLevel: Int {
+    case debug = 0, error = 1, warning = 2, info = 3
 }
 
 public class TSLog {
@@ -17,15 +17,19 @@ public class TSLog {
     
     public var activeLevel: LogLevel = .error
     
-    public func log(_ level: LogLevel, _ str: String, functionName: String = #function) {
-        if (level == activeLevel) {
+    public func log(_ level: LogLevel, _ str: String, functionName: String = #function, fileName: String = #file) {
+        
+        if (level.rawValue <= activeLevel.rawValue) {
+            
+            let fname = ((fileName as NSString).lastPathComponent as NSString).deletingPathExtension
+            print("TSLog :: \(functionName) :: \(fname) > \(str) ")
             print ("\(functionName)::\(level):: \(str) ")
         }
       
     }
     
     public func logCall(functionName: String = #function, fileName: String = #file) {
-        if (activeLevel == .debug) {
+        if (activeLevel.rawValue <= LogLevel.warning.rawValue) {
             let fname = ((fileName as NSString).lastPathComponent as NSString).deletingPathExtension
             print("TSLog :: \(functionName) :: \(fname) ")
         }
