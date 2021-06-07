@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TSDotView: UIView {
+public class TSDotView: UIView {
 
-    override func didMoveToSuperview() {
+    public override func didMoveToSuperview() {
         
         layer.cornerRadius = self.frame.width / 2
         layer.masksToBounds = true

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum GradientDirection {
+public enum GradientDirection {
     case leftToRight
     case rightToLeft
     case topToBottom
@@ -18,7 +18,7 @@ enum GradientDirection {
 
 
 
-struct UIViewHelper {
+public struct UIViewHelper {
     
     
     static func roundCorners(view :UIView, corners: UIRectCorner, radius: CGFloat) {
@@ -33,7 +33,7 @@ struct UIViewHelper {
 
 
 
-extension UIView {
+public extension UIView {
     
     // Example use: myView.addBorder(toSide: .Left, withColor: UIColor.redColor().CGColor, andThickness: 1.0)
     
@@ -59,7 +59,7 @@ extension UIView {
 
 
 
-extension UIView {
+public extension UIView {
     func gradientBackground(from color1: UIColor, to color2: UIColor, direction: GradientDirection) {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
