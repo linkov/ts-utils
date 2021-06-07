@@ -19,7 +19,7 @@ public class TSLog {
     
     public func log(_ level: LogLevel, _ str: String, functionName: String = #function, fileName: String = #file) {
         
-        if (level.rawValue <= activeLevel.rawValue) {
+        if (level.rawValue >= activeLevel.rawValue) {
             
             let fname = ((fileName as NSString).lastPathComponent as NSString).deletingPathExtension
             print("TSLog :: \(functionName) :: \(fname) > \(str) ")
@@ -29,7 +29,7 @@ public class TSLog {
     }
     
     public func logCall(functionName: String = #function, fileName: String = #file) {
-        if (activeLevel.rawValue <= LogLevel.warning.rawValue) {
+        if (activeLevel.rawValue >= LogLevel.warning.rawValue) {
             let fname = ((fileName as NSString).lastPathComponent as NSString).deletingPathExtension
             print("TSLog :: \(functionName) :: \(fname) ")
         }
