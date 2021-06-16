@@ -11,7 +11,7 @@ public enum LogLevel: Int {
     case debug = 0, error = 1, warning = 2, info = 3
 }
 
-public class TSLog {
+open class TSLog {
     
     public static let sI = TSLog()
     
