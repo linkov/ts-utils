@@ -10,7 +10,10 @@ import UIKit
 
 public class TSButton: UIButton {
     
-    public var isEnalable = false {
+    @IBInspectable public var isGrayedOut = true
+    @IBInspectable public var isPronounced = false
+    
+    @IBInspectable public var isEnalable = false {
         didSet {
             if (isEnalable) {
                 setTitleColor(.black, for: .normal)
@@ -53,7 +56,28 @@ public class TSButton: UIButton {
             }
         }
 
+        if (!isPronounced) {
+            configureForPronounced()
+        }
+        
+
     }
+    
+    func configureForPronounced() {
+        backgroundColor = .black
+        
+        if (isGrayedOut) {
+            layer.borderColor = UIColor.darkGray.cgColor
+            setTitleColor(UIColor.darkGray, for: .normal)
+        } else {
+            layer.borderColor = UIColor.lightGray.cgColor
+            setTitleColor(UIColor.lightGray, for: .normal)
+        }
+    
+        
+    }
+    
+
     
     public override func setTitle(_ title: String?, for state: UIControl.State) {
         let ttl = "   \(title ?? "")   "
