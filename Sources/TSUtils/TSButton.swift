@@ -9,11 +9,11 @@
 import UIKit
 
 public class TSButton: UIButton {
+    public var isBig: Bool = false
+    @IBInspectable public var isGrayedOut: Bool = true
+    @IBInspectable public var isPronounced: Bool = false
     
-    @IBInspectable public var isGrayedOut = true
-    @IBInspectable public var isPronounced = false
-    
-    @IBInspectable public var isEnalable = false {
+    @IBInspectable public var isEnalable: Bool = false {
         didSet {
             if (isEnalable) {
                 setTitleColor(.black, for: .normal)
@@ -31,7 +31,7 @@ public class TSButton: UIButton {
         setTitleColor(.yellow, for: .normal)
     
         
-        titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .heavy)
+        titleLabel?.font = UIFont.systemFont(ofSize: isBig ? 28 : 15, weight: isBig ? .medium : .heavy)
         setTitleColor(UIColor.yellow.withAlphaComponent(0.5), for: .disabled)
         
         
