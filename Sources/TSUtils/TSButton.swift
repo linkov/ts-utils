@@ -12,7 +12,9 @@ public enum TSButtonType {
     case deviceConnected,
          deviceDisconnected,
          sliceFxEnabled,
+         sliceFxStandard,
          standardLook,
+         standardLookInactive,
          yellowTouchUp,
          yellowTouchDown
          
@@ -21,15 +23,28 @@ public enum TSButtonType {
 
 public class TSButton: UIButton {
     
+    
+    var style: TSButtonType = .standardLook
+    
+    public override func didMoveToSuperview() {
+        style(with: style)
+    }
+    
     public override func setTitle(_ title: String?, for state: UIControl.State) {
         let ttl = "   \(title ?? "")   "
         super.setTitle(ttl, for: state)
     }
-}
-
-extension UIButton {
     
-    func style(with buttonType: TSButtonType) {
+    public func style(with buttonType: TSButtonType) {
+        
+        layer.borderWidth = 3
+        layer.cornerRadius = 6
+    
+        if (titleLabel != nil) {
+            titleLabel!.font = UIFont.systemFont(ofSize:  15, weight: .heavy)
+        }
+        
+
         
         backgroundColor = .black
         setTitleColor(.lightGray, for: .normal)
@@ -42,9 +57,19 @@ extension UIButton {
         case .sliceFxEnabled:
             layer.borderColor = UIColor.white.cgColor
             backgroundColor = .white
+            setTitleColor(.black, for: .normal)
+        case .sliceFxStandard:
+            layer.borderColor = UIColor.white.cgColor
+            backgroundColor = .black
+            setTitleColor(.white, for: .normal)
         case .standardLook:
+            layer.borderColor = UIColor.lightGray.cgColor
             backgroundColor = .black
             setTitleColor(.lightGray, for: .normal)
+        case .standardLookInactive:
+            layer.borderColor = UIColor.darkGray.cgColor
+            backgroundColor = .black
+            setTitleColor(.darkGray, for: .normal)
         case .yellowTouchUp:
             backgroundColor = .black
             setTitleColor(.yellow, for: .normal)
@@ -55,5 +80,7 @@ extension UIButton {
             layer.borderColor = UIColor.yellow.cgColor
 
        }
+        
+        self.style = buttonType
     }
 }
