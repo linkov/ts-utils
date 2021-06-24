@@ -11,12 +11,14 @@ import UIKit
 public enum TSButtonType {
     case deviceConnected,
          deviceDisconnected,
-         sliceFxEnabled,
-         sliceFxStandard,
+         standardLookHighlighted,
          standardLook,
+         standardLookSmall,
+         standardLookSmallInactive,
          standardLookInactive,
          yellowTouchUp,
-         yellowTouchDown
+         yellowTouchDown,
+         greyPanel
          
 }
 
@@ -54,11 +56,7 @@ public class TSButton: UIButton {
             layer.borderColor = UIColor.lightGray.cgColor
         case .deviceDisconnected:
             layer.borderColor = UIColor.clear.cgColor
-        case .sliceFxEnabled:
-            layer.borderColor = UIColor.white.cgColor
-            backgroundColor = .white
-            setTitleColor(.black, for: .normal)
-        case .sliceFxStandard:
+        case .standardLookHighlighted:
             layer.borderColor = UIColor.white.cgColor
             backgroundColor = .black
             setTitleColor(.white, for: .normal)
@@ -66,6 +64,20 @@ public class TSButton: UIButton {
             layer.borderColor = UIColor.lightGray.cgColor
             backgroundColor = .black
             setTitleColor(.lightGray, for: .normal)
+        case .standardLookSmall:
+            layer.borderColor = UIColor.lightGray.cgColor
+            backgroundColor = .black
+            setTitleColor(.lightGray, for: .normal)
+            titleLabel!.font = UIFont.systemFont(ofSize:  10, weight: .heavy)
+            layer.borderWidth = 2.4
+            
+        case .standardLookSmallInactive:
+            layer.borderColor = UIColor.darkGray.cgColor
+            backgroundColor = .black
+            setTitleColor(.darkGray, for: .normal)
+            titleLabel!.font = UIFont.systemFont(ofSize:  10, weight: .heavy)
+            layer.borderWidth = 2.4
+            
         case .standardLookInactive:
             layer.borderColor = UIColor.darkGray.cgColor
             backgroundColor = .black
@@ -78,7 +90,10 @@ public class TSButton: UIButton {
             backgroundColor = .yellow
             setTitleColor(.black, for: .normal)
             layer.borderColor = UIColor.yellow.cgColor
-
+        case .greyPanel:
+            backgroundColor = .lightGray
+            setTitleColor(.black, for: .normal)
+            layer.borderColor = UIColor.lightGray.cgColor
        }
         
         self.style = buttonType
