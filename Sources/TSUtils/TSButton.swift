@@ -13,6 +13,7 @@ public enum TSButtonType {
          deviceDisconnected,
          standardLookHighlighted,
          standardLook,
+         standardLookWhite,
          standardLookSmall,
          standardLookSmallInactive,
          standardLookInactive,
@@ -58,6 +59,10 @@ public class TSButton: UIButton {
             layer.borderColor = UIColor.clear.cgColor
         case .standardLookHighlighted:
             layer.borderColor = UIColor.white.cgColor
+            backgroundColor = .white
+            setTitleColor(.black, for: .normal)
+        case .standardLookWhite:
+            layer.borderColor = UIColor.white.cgColor
             backgroundColor = .black
             setTitleColor(.white, for: .normal)
         case .standardLook:
@@ -73,10 +78,11 @@ public class TSButton: UIButton {
             
         case .standardLookSmallInactive:
             layer.borderColor = UIColor.darkGray.cgColor
-            backgroundColor = .black
+            backgroundColor = .clear
             setTitleColor(.darkGray, for: .normal)
             titleLabel!.font = UIFont.systemFont(ofSize:  10, weight: .heavy)
             layer.borderWidth = 2.4
+            layer.opacity = 0.7
             
         case .standardLookInactive:
             layer.borderColor = UIColor.darkGray.cgColor
